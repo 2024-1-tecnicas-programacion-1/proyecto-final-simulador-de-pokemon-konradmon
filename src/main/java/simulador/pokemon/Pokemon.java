@@ -1,5 +1,9 @@
 package simulador.pokemon;
 
 public class Pokemon {
-    // TODO: Aquí va tu código
+    protected String nombre;
+    protected int salud;
+    protected int puntosDeAtaque;
+ 
+    
 }
