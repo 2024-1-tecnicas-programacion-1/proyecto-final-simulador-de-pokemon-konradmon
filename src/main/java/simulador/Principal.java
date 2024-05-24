@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Principal {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         int opcion;
 
         do {
@@ -14,7 +14,7 @@ public class Principal {
             System.out.println("3. Iniciar Batalla");
             System.out.println("4. Salir");
             System.out.print("Elige una opción: ");
-            opcion = scanner.nextInt();
+            opcion = sc.nextInt();
 
             switch (opcion) {
                 case 1:
