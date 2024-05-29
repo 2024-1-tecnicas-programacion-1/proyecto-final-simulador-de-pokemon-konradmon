@@ -40,8 +40,16 @@ public abstract class Pokemon {
         return puntosDeAtaque;
     }
     
+    public TipoPokemon getTipo() {
+        
+        return tipo;
+    }
     
-    
+    public String getEstado() {
+        
+        return estado;
+        
+    }
     
 }
  
