@@ -5,12 +5,13 @@ public abstract class Pokemon {
     protected int salud;
     protected int puntosDeAtaque;
     protected TipoPokemon tipo;
-    protected EstadoPokemon estado;
+    protected String estado;
+    
 
     public Pokemon(String nombre, TipoPokemon tipo) {
         this.nombre = nombre;
         this.tipo = tipo;
-        this.estado = EstadoPokemon.NORMAL;
+        this.estado = "NORMAL";
     }
 
     public abstract void atacar(Pokemon oponente);
@@ -19,12 +20,29 @@ public abstract class Pokemon {
         this.salud -= daño;
         if (this.salud <= 0) {
             this.salud = 0;
-            this.estado = EstadoPokemon.DEBILITADO;
+            this.estado = "DEBILITADO";
         }
     }
 
     public void entrenar() {
+        
+        this.puntosDeAtaque +=20;
+        this.salud+=30;
     }
+    
+    public int getSalud (){
+    
+        return salud;
+    }
+    
+    public int getpuntosDeAtaque (){
+    
+        return puntosDeAtaque;
+    }
+    
+    
+    
+    
 }
  
    
