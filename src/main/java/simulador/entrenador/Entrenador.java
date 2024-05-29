@@ -2,6 +2,7 @@ package simulador.entrenador;
 
 import java.util.ArrayList;
 import java.util.List;
+import simulador.pokemon.Pokemon;
 
 public class Entrenador {
     private String nombre;
@@ -22,7 +23,7 @@ public class Entrenador {
 
     public void mostrarPokemones() {
         for (Pokemon pokemon : pokemones) {
-            System.out.println(pokemon.nombre);
+            System.out.println("\n "+ pokemon.getNombre());
         }
     }
 

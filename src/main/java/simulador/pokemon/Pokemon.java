@@ -13,9 +13,16 @@ public abstract class Pokemon {
         this.tipo = tipo;
         this.estado = "NORMAL";
     }
-
-    public abstract void atacar(Pokemon oponente);
-
+    
+    
+    public void atacar(Pokemon oponente) {
+        double multiplicador;
+        multiplicador = this.tipo.obtenerMultiplicadorDeDaño(this.tipo, oponente.getTipo());
+        int ataque = (int) (this.puntosDeAtaque * multiplicador);
+        oponente.recibirDaño(ataque);
+    }
+   
+    
     public void recibirDaño(int daño) {
         this.salud -= daño;
         if (this.salud <= 0) {
@@ -51,6 +58,10 @@ public abstract class Pokemon {
         
     }
     
+    public String getNombre(){
+    
+        return nombre;
+    }
 }
  
    
