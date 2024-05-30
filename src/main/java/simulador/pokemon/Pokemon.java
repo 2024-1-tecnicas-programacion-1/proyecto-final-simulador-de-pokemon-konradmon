@@ -15,7 +15,9 @@ public abstract class Pokemon {
         this.estado = estado;
     }
     
-
+    public Pokemon(String nombre, TipoPokemon tipo) {
+        this(nombre, 100, 50, tipo, "NORMAL"); 
+    }
    
     
     
