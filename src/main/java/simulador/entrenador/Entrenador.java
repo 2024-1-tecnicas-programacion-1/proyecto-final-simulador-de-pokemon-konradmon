@@ -2,6 +2,8 @@ package simulador.entrenador;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+
 import simulador.pokemon.Pokemon;
 
 public class Entrenador {
@@ -14,7 +16,11 @@ public class Entrenador {
     }
 
     public void agregarPokemon(Pokemon pokemon) {
-        this.pokemones.add(pokemon);
+        if (pokemones.size() < 6) {
+            pokemones.add(pokemon);
+        } else {
+            System.out.println("Equipo completo");
+        }
     }
 
     public void entrenarPokemon(Pokemon pokemon) {
@@ -22,14 +28,34 @@ public class Entrenador {
     }
 
     public void mostrarPokemones() {
-        System.out.println("Los pokemones de " + this.nombre + "son: ");
+        if (!pokemones.isEmpty()) {
+        System.out.println("Pokemones de " + nombre + ":");
         for (Pokemon pokemon : pokemones) {
             System.out.println("\n "+ pokemon.getNombre());
+        }}
+        System.out.println("lista vacia");
+
+    }
+
+    public Pokemon elegirPokemon() {mostrarPokemones();
+        if (!pokemones.isEmpty()) {
+            Scanner sc = new Scanner(System.in);
+            System.out.print("Selecciona el número del Pokemon para la batalla: ");
+            int numero = sc.nextInt() - 1;
+
+            if (numero >= 0 && numero < pokemones.size()) {
+                return pokemones.get(numero);
+            } else {
+                System.out.println("num no válido. Seleccionando el primer Pokemon.");
+                return pokemones.get(0);
+            }
+        } else {
+            System.out.println("No hay Pokemones disponibles.");
+            return null;
         }
     }
 
-    public Pokemon elegirPokemonParaBatalla() {
-        
-        return null;
+    public String getNombre() {
+        return nombre;
     }
 }
