@@ -13,55 +13,105 @@ public enum TipoPokemon {
     ROCA,
     VOLADOR,
     FANTASMA;
+
+    public static double obtenerMultiplicadorDeDaño(TipoPokemon[] atacantes, TipoPokemon[] defensores) {
+        double multiplicador = 1.0;
+        for (TipoPokemon atacante : atacantes) {
+            for (TipoPokemon defensor : defensores) {
+                multiplicador *= obtenerMultiplicadorDeDaño(atacante, defensor);
+            }
+        }
+        return multiplicador;
+    }
     
-    public double obtenerMultiplicadorDeDaño(TipoPokemon atacante, TipoPokemon defensor) {
+    public static double obtenerMultiplicadorDeDaño(TipoPokemon atacante, TipoPokemon defensor) {
         switch (atacante) {
             case FUEGO:
-                if (defensor == PLANTA || defensor == HIELO) return 2.0;
-                if (defensor == AGUA || defensor == FUEGO) return 0.5;
-                break;
+                switch (defensor) {
+                    case PLANTA, HIELO:
+                        return 2.0;
+                    case AGUA, FUEGO:
+                        return 0.5;
+                }
             case AGUA:
-                if (defensor == FUEGO || defensor == ROCA) return 2.0;
-                if (defensor == AGUA || defensor == PLANTA) return 0.5;
-                break;
+                switch (defensor) {
+                    case FUEGO, ROCA:
+                        return 2.0;
+                    case AGUA, PLANTA:
+                        return 0.5;                }
             case ELECTRICO:
-                if (defensor == AGUA || defensor == VOLADOR) return 2.0;
-                if (defensor == ELECTRICO || defensor == TIERRA) return 0.5;
-                break;
+                switch (defensor) {
+                    case AGUA, VOLADOR:
+                        return 2.0;
+                    case ELECTRICO, TIERRA:
+                        return 0.5;
+                }
             case PLANTA:
-                if (defensor == AGUA || defensor == TIERRA) return 2.0;
-                if (defensor == FUEGO || defensor == PLANTA) return 0.5;
+                switch (defensor){
+                    case AGUA,TIERRA:
+                        return 2.0;
+                    case FUEGO,PLANTA:
+                        return 0.5;
+                }
                 break;
             case HIELO:
-                if (defensor == PLANTA || defensor == VOLADOR) return 2.0;
-                if (defensor == FUEGO || defensor == HIELO) return 0.5;
+                switch (defensor){
+                    case PLANTA,VOLADOR:
+                        return 2.0;
+                    case FUEGO,HIELO:
+                        return 0.5;
+                }
                 break;
             case ROCA:
-                if (defensor == FUEGO || defensor == VOLADOR) return 2.0;
-                if (defensor == AGUA || defensor == PLANTA) return 0.5;
+                switch (defensor){
+                    case FUEGO,VOLADOR:
+                        return 2.0;
+                    case AGUA, PLANTA:
+                        return 0.5;
+                }
                 break;
             case VOLADOR:
-                if (defensor == PLANTA) return 2.0;
-                if (defensor == ELECTRICO || defensor == ROCA) return 0.5;
+                switch (defensor){
+                    case PLANTA:
+                        return 2.0;
+                    case ELECTRICO,ROCA:
+                        return 0.5;
+                }
                 break;
             case FANTASMA:
-                if (defensor == PSIQUICO || defensor == FANTASMA) return 2.0;
+                switch (defensor){
+                    case PSIQUICO,FANTASMA:
+                        return 2.0;
+                }
                 break;
             case PSIQUICO:
-                if (defensor == VENENO) return 2.0;
-                if (defensor == PSIQUICO ) return 0.5;
+                switch (defensor){
+                    case VENENO:
+                        return 2.0;
+                    case PSIQUICO:
+                        return 0.5;
+                }
                 break;
             case HADA:
-                if (defensor == VENENO) return 0.5;
+                switch (defensor){
+                    case VENENO:
+                        return 0.5;
+                }
                 break;
             case TIERRA:
-                if (defensor == VENENO || defensor == ROCA) return 2.0;
-                if (defensor == PLANTA || defensor == VOLADOR) return 0.5;
-                break;
+                switch (defensor){
+                    case VENENO,ROCA:
+                        return 2.0;
+                    case PLANTA,VOLADOR:
+                        return 0.5;
+                                }break;
             case VENENO:
-                if (defensor == PLANTA || defensor == HADA) return 2.0;
-                if (defensor == VENENO || defensor == TIERRA) return 0.5;
-                break;
+                switch (defensor){
+                case PLANTA,HADA:
+                    return 2.0;
+                case VENENO,TIERRA:
+                    return 0.5;
+                }break;
             default:
                 return 1.0;
         }

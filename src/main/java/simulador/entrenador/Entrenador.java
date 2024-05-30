@@ -22,6 +22,7 @@ public class Entrenador {
     }
 
     public void mostrarPokemones() {
+        System.out.println("Los pokemones de " + this.nombre + "son: ");
         for (Pokemon pokemon : pokemones) {
             System.out.println("\n "+ pokemon.getNombre());
         }
