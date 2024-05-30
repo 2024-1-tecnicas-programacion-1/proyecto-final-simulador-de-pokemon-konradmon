@@ -6,13 +6,17 @@ public abstract class Pokemon {
     protected int puntosDeAtaque;
     protected TipoPokemon tipo;
     protected String estado;
+
+    public Pokemon(String nombre, int salud, int puntosDeAtaque, TipoPokemon tipo, String estado) {
+        this.nombre = nombre;
+        this.salud = salud;
+        this.puntosDeAtaque = puntosDeAtaque;
+        this.tipo = tipo;
+        this.estado = estado;
+    }
     
 
-    public Pokemon(String nombre, TipoPokemon tipo) {
-        this.nombre = nombre;
-        this.tipo = tipo;
-        this.estado = "NORMAL";
-    }
+   
     
     
     public void atacar(Pokemon oponente) {
